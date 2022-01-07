@@ -27,7 +27,7 @@ jenkins:
             cpu: 1024
             executionRole: ${AGENT_EXECUTION_ROLE_ARN}
             image: jenkins/inbound-agent:alpine
-            label: ecs
+            label: default
             launchType: FARGATE
             logDriver: awslogs
             logDriverOptions:
@@ -41,3 +41,26 @@ jenkins:
             securityGroups: ${AGENT_SECURITY_GROUP_ID}
             subnets: ${SUBNET_IDS}
             templateName: jenkins-agent
+          - assignPublicIp: true
+            cpu: 1024
+            executionRole: ${AGENT_EXECUTION_ROLE_ARN}
+            image: jenkins/inbound-agent:alpine
+            label: docker
+            launchType: EC2
+            # mountPoints:
+            #   - containerPath: "/var/run/docker.sock"
+            #     sourcePath: "/var/run/docker.sock"
+            #     readOnly: false
+            privileged: true
+            logDriver: awslogs
+            logDriverOptions:
+              - name: awslogs-group
+                value: ${LOG_GROUP_NAME}
+              - name: awslogs-region
+                value: ${AWS_REGION}
+              - name: awslogs-stream-prefix
+                value: jenkins-docker-agent
+            memoryReservation: 4096
+            securityGroups: ${AGENT_SECURITY_GROUP_ID}
+            subnets: ${SUBNET_IDS}
+            templateName: jenkins-docker-agent
