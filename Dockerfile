@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.319.1-lts-jdk11
+FROM jenkins/jenkins:2.319.2-lts-jdk11
 
 COPY jenkins-resources/plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
