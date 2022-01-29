@@ -1,9 +1,9 @@
-amazon-ecs:1.38
-configuration-as-code:1.55
+amazon-ecs:1.39
+configuration-as-code:1346.ve8cfa_3473c94
 workflow-aggregator:2.6
-docker-workflow:1.26
+docker-workflow:1.28
 role-strategy:3.2.0
 authorize-project:1.4.0
 gitlab-plugin:1.5.27
-slack:2.49
-email-ext:2.86
+slack:602.v0da_f7458945d
+email-ext:2.87
